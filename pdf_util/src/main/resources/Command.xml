@@ -1,0 +1,12 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="Command" class="com.epam.model.Command">
+        <property name="type" value="FIND_IDS_IN_REPORTS"/>
+        <property name="unique" value="true"/>
+        <property name="result" value="NOT_EXECUTED"/>
+        <property name="pathForReports" value="C:\report2"/>
+    </bean>
+</beans>
