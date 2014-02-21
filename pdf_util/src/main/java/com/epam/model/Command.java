@@ -14,7 +14,7 @@ public class Command implements java.io.Serializable {
     /**
      * Set if report redirects to file.
      */
-    private String reportPath;
+    private String pathToGeneratedReport;
 
     private boolean isUnique;
     private String values;
@@ -62,14 +62,6 @@ public class Command implements java.io.Serializable {
         this.isUnique = isUnique;
     }
 
-    public String getReportsPath() {
-        return reportsPath;
-    }
-
-    public void setReportsPath(String reportsPath) {
-        this.reportsPath = reportsPath;
-    }
-
     public ResultOutput getOutput() {
         return output;
     }
@@ -84,6 +76,15 @@ public class Command implements java.io.Serializable {
 
     public void setValues(String values) {
         this.values = values;
+    }
+
+
+    public String getPathToGeneratedReport() {
+        return pathToGeneratedReport;
+    }
+
+    public void setPathToGeneratedReport(String pathToGeneratedReport) {
+        this.pathToGeneratedReport = pathToGeneratedReport;
     }
 
     @Override
