@@ -1,2 +1,2 @@
-pdf-mapping
+repository for project utils
 ===========
