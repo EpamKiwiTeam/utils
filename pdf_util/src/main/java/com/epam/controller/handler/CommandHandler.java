@@ -26,4 +26,12 @@ public abstract class CommandHandler {
     public void outputResult(Resultant resultOutput) {
         resultOutput.output(getResult(), command);
     }
+
+    public Command getCommand() {
+        return command;
+    }
+
+    public void setCommand(Command command) {
+        this.command = command;
+    }
 }
