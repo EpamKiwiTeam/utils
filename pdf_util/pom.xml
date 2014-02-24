@@ -8,7 +8,6 @@
     <artifactId>pdf_util</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
-    <name>superman</name>
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
