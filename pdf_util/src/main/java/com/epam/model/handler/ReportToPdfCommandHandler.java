@@ -2,6 +2,8 @@ package com.epam.model.handler;
 
 import com.epam.model.CommandArgument;
 
+import java.util.List;
+
 public class ReportToPdfCommandHandler extends ReportCommandHandler {
 
     private PdfCommandHandler pdfHandler;
@@ -34,6 +36,13 @@ public class ReportToPdfCommandHandler extends ReportCommandHandler {
 
     @Override
     public String getResult() {
-        return super.getResult() + "\n" + pdfHandler.getResult();
+        StringBuilder result = new StringBuilder();
+        if(isValuesSpecified()){
+            List<String> valuesList = getValues();
+
+        } else {
+
+        }
+        return result.toString();
     }
 }

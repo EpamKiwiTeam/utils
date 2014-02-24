@@ -33,7 +33,13 @@ public class ReportCommandHandler extends CommandHandler {
 
     @Override
     public void handle() {
-        List<File> files = ResourceReader.readDirectory(Paths.get(getCommandData().getPathForReports()), PropertiesBundle.getValue("htmlreport.template"));
+        List<File> files = new ArrayList<File>();
+        File dir = new File(getCommandData().getPdfPath());
+        if (dir.isDirectory())
+            files.addAll(ResourceReader.readDirectory(Paths.get(getCommandData().getPathForReports()), PropertiesBundle.getValue("htmlreport.template")));
+        else {
+            files.add(dir);
+        }
         ExecutorService service = Executors.newFixedThreadPool(Integer.parseInt(PropertiesBundle.getValue("processing.threads.count")));
         for(File report: files) {
             service.execute(new ReportExtractor(report));
