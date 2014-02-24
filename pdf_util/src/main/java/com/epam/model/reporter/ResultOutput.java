@@ -1,8 +1,4 @@
-package com.epam.model;
-
-import com.epam.controller.reporter.ConsoleReporter;
-import com.epam.controller.reporter.FileReporter;
-import com.epam.controller.reporter.Resultant;
+package com.epam.model.reporter;
 
 public enum ResultOutput {
 

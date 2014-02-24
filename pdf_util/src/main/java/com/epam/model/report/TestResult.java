@@ -1,4 +1,4 @@
-package com.epam.model;
+package com.epam.model.report;
 
 public enum TestResult {
     PASSED,

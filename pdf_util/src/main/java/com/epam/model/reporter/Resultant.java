@@ -1,4 +1,4 @@
-package com.epam.controller.reporter;
+package com.epam.model.reporter;
 
 import com.epam.model.Command;
 

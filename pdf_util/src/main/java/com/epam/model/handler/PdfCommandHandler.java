@@ -1,6 +1,5 @@
-package com.epam.controller.handler;
+package com.epam.model.handler;
 
-import com.epam.controller.reporter.Resultant;
 import com.epam.model.Command;
 import com.epam.util.PropertiesBundle;
 import com.epam.util.file_system.ResourceReader;
@@ -30,25 +29,26 @@ public class PdfCommandHandler extends CommandHandler{
     @Override
     public void handle() {
         List<File> files = ResourceReader.readDirectory(Paths.get(getCommand().getPdfPath()), PropertiesBundle.getValue("pdffile.template"));
-        ExecutorService service = Executors.newFixedThreadPool(Integer.parseInt(PropertiesBundle.getValue("pdf.threadscount")));
+        ExecutorService service = Executors.newFixedThreadPool(Integer.parseInt(PropertiesBundle.getValue("processing.threads.count")));
         long start = System.currentTimeMillis();
         for(File pdf: files) {
-            service.submit(new PdfExtractor(pdf));
+            service.execute(new PdfExtractor(pdf));
         }
         try {
-            service.awaitTermination(Integer.parseInt(PropertiesBundle.getValue("pdf.waitforprocessing")), TimeUnit.SECONDS);
-            System.out.println(service.isTerminated());
-            System.out.println(service.isShutdown());
+            service.shutdown();
+            service.awaitTermination(Integer.parseInt(PropertiesBundle.getValue("processing.timeout")), TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        System.out.println(service.isTerminated());
+        System.out.println(service.isShutdown());
+
+
         System.out.println("Processing time is: " + (System.currentTimeMillis() - start) / 1000 + " seconds");
-        System.out.print("!!!!!!!!!!!!!");
     }
 
     @Override
     public String getResult() {
-        System.out.print("dfgdfgfg");
         StringBuilder result = new StringBuilder();
         for(File pdf: pdfFiles.keySet()) {
            result.append(pdf.getAbsolutePath()).append(" "+pdfFiles.get(pdf).size()).append("\n");
@@ -64,12 +64,12 @@ public class PdfCommandHandler extends CommandHandler{
         com.setPdfPath("C:\\123");
         PdfCommandHandler hand = new PdfCommandHandler(com);
         hand.handle();
-        hand.outputResult(new Resultant() {
+       /* hand.outputResult(new Resultant() {
             @Override
             public void output(String result, Command command) {
                 System.out.print(result);
             }
-        });
+        });   */
     }
 
     private class PdfExtractor implements Runnable{

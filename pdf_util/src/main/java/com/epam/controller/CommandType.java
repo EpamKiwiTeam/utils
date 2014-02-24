@@ -1,14 +1,14 @@
 package com.epam.controller;
 
 
-import com.epam.controller.handler.CommandHandler;
-import com.epam.controller.handler.PdfCommandHandler;
-import com.epam.controller.handler.ReportCommandHandler;
-import com.epam.controller.handler.ReportToPdfCommandHandler;
+import com.epam.model.handler.CommandHandler;
+import com.epam.model.handler.PdfCommandHandler;
+import com.epam.model.handler.ReportCommandHandler;
+import com.epam.model.handler.ReportToPdfCommandHandler;
 
 /**
  * Class uses for description of supported methods. Uses to bind enum value, which defined in {@link com.epam.model.Command command} bean, with handler class,
- * which must implement {@link com.epam.controller.handler.CommandHandler CommandHandler} interface
+ * which must implement {@link com.epam.model.handler.CommandHandler CommandHandler} interface
  */
 public enum CommandType {
 

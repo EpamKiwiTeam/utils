@@ -1,6 +1,6 @@
-package com.epam.controller.handler;
+package com.epam.model.handler;
 
-import com.epam.controller.reporter.Resultant;
+import com.epam.model.reporter.Resultant;
 import com.epam.model.Command;
 
 public abstract class CommandHandler {

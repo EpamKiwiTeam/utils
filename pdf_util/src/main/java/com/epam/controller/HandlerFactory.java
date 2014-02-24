@@ -1,6 +1,7 @@
-package com.epam.controller.handler;
+package com.epam.controller;
 
 import com.epam.model.Command;
+import com.epam.model.handler.CommandHandler;
 
 public class HandlerFactory {
 

@@ -1,10 +1,8 @@
 package com.epam.controller;
 
 
-import com.epam.controller.handler.CommandHandler;
-import com.epam.controller.handler.HandlerFactory;
-import com.epam.controller.reporter.ReporterFactory;
-import com.epam.controller.reporter.Resultant;
+import com.epam.model.handler.CommandHandler;
+import com.epam.model.reporter.Resultant;
 import com.epam.model.Command;
 
 public class CommandExecutionFacade {

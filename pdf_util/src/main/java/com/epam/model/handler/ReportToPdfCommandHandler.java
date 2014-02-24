@@ -1,4 +1,4 @@
-package com.epam.controller.handler;
+package com.epam.model.handler;
 
 import com.epam.model.Command;
 

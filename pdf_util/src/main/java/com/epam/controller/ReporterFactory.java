@@ -1,4 +1,6 @@
-package com.epam.controller.reporter;
+package com.epam.controller;
+
+import com.epam.model.reporter.Resultant;
 
 public class ReporterFactory {
 

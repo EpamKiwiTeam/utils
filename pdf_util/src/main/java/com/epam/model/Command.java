@@ -1,6 +1,8 @@
 package com.epam.model;
 
 import com.epam.controller.CommandType;
+import com.epam.model.reporter.ResultOutput;
+import com.epam.model.report.TestResult;
 
 public class Command implements java.io.Serializable {
 
