@@ -3,10 +3,17 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id="Command" class="com.epam.model.Command">
-        <property name="type" value="FIND_IDS_IN_REPORTS"/>
-        <property name="unique" value="true"/>
+    <bean id="command" class="com.epam.model.handler.ReportToPdfCommandHandler">
+        <constructor-arg ref="param"/>
         <property name="result" value="NOT_EXECUTED"/>
-        <property name="pathForReports" value="C:\report2"/>
     </bean>
+
+    <bean id="param" class="com.epam.model.CommandArgument">
+        <property name="pdfPath" value="C:\123\"/>
+        <property name="pathForReports" value="c:\reports"/>
+    </bean>
+
+    <!--<bean id="reporter" class="com.epam.model.reporter.FileReporter">-->
+        <!--<property name="pathToReport" value="c:\"/>-->
+    <!--</bean>-->
 </beans>

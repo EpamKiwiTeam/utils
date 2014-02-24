@@ -1,4 +1,4 @@
-package com.epam.controller;
+package com.epam.model.handler;
 
 import com.epam.model.report.HtmlReport;
 import com.epam.model.report.MappingResultRecord;
@@ -19,9 +19,6 @@ public class PdfReportParser {
 
     public final static String COLUMN_TAG = "td";
 
-    public static void main(String...args) {
-        System.out.print(parseAxaReport(new File("C:\\report2\\TestCase1_AL.html")));
-    }
 
     public static HtmlReport parseAxaReport(File htmlReport) {
         HtmlReport report = new HtmlReport(htmlReport);

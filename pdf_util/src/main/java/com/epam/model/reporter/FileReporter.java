@@ -1,6 +1,5 @@
 package com.epam.model.reporter;
 
-import com.epam.model.Command;
 import com.epam.util.PropertiesBundle;
 import org.apache.log4j.Logger;
 
@@ -14,31 +13,35 @@ public class FileReporter implements Resultant {
 
     private static final Logger log = Logger.getLogger(FileReporter.class);
 
-    private final static String DATE_FORMAT = "dd/MM/yyyy HH:mm:ss";
+    private final static String DATE_FORMAT = "dd.MM.yyyyHH.mm.ss";
+    private String pathToReport;
 
 
     @Override
-    public void output(String result, Command command) {
-        File report = getReportFile(command);
+    public void output(String result) {
+        File report = getReportFile();
         Writer stream = null;
         try {
             stream = new FileWriter(report);
             stream.append(result);
             stream.flush();
             stream.close();
+            log.info("Report " + report.getAbsolutePath() + " was created");
         } catch (Exception e) {
             log.warn("Can't redirect results into file: " + report.getAbsolutePath(), e);
         }
     }
 
-    private File getReportFile(Command command){
+
+
+    private File getReportFile(){
         File report;
-        if(command.getPathToGeneratedReport() == null) {
+        if(pathToReport == null) {
             report = getDefaultReportFile();
         } else {
-            report = new File(command.getPathToGeneratedReport());
+            report = new File(pathToReport);
             if(report.isDirectory()){
-                report = new File(command.getPathToGeneratedReport() + "\\" + getDefaultFileName());
+                report = new File(pathToReport + "\\" + getDefaultFileName());
             }
         }
         return report;
@@ -55,5 +58,20 @@ public class FileReporter implements Resultant {
                 .append(new SimpleDateFormat(DATE_FORMAT).format(new Date()))
                 .append(".txt");
         return name.toString();
+    }
+
+    public String getPathToReport() {
+        return pathToReport;
+    }
+
+    public void setPathToReport(String pathToReport) {
+        this.pathToReport = pathToReport;
+    }
+
+    @Override
+    public String toString() {
+        return "FileReporter{" +
+                "pathToReport='" + pathToReport + '\'' +
+                '}';
     }
 }
